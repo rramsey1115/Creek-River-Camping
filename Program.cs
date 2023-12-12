@@ -82,7 +82,6 @@ app.MapDelete("/api/campsites/{id}", (CreekRiverDbContext db, int id) =>
     db.Campsites.Remove(campsite);
     db.SaveChanges();
     return Results.NoContent();
-
 });
 
 
