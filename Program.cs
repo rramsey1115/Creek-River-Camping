@@ -1,7 +1,5 @@
 using CreekRiver.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Http.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +24,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 
 // Get Campsites---------------------------------------------------------------------------
 app.MapGet("/api/campsites", (CreekRiverDbContext db) =>
@@ -69,7 +66,6 @@ app.MapPost("/api/campsites", (CreekRiverDbContext db, Campsite campsite) =>
     db.SaveChanges();
     return Results.Created($"/api/campsites/{campsite.Id}", campsite);
 });
-
 
 // DELETE a campsite----------------------------------------------------------------------
 app.MapDelete("/api/campsites/{id}", (CreekRiverDbContext db, int id) =>
@@ -170,6 +166,7 @@ app.MapDelete("api/reservations/{id}", (CreekRiverDbContext db, int id) => {
     db.SaveChanges();
     return Results.NoContent();
 });
+
 
 
 
