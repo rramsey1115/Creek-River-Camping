@@ -16,7 +16,6 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 // allows our api endpoints to access the database through Entity Framework Core
 builder.Services.AddNpgsql<CreekRiverDbContext>(builder.Configuration["CreekRiverDbConnectionString"]);
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,7 +59,9 @@ app.MapGet("/api/campsites/{id}", (CreekRiverDbContext db, int id) =>
                 MaxReservationDays = c.CampsiteType.MaxReservationDays
             }
         })
-        .Single(c => c.Id == id);
+        .SingleOrDefault(c => c.Id == id);
 });
+
+
 
 app.Run();
