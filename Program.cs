@@ -29,4 +29,20 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 
+// Get Campsites----------------
+app.MapGet("/api/campsites", (CreekRiverDbContext db) =>
+{
+    return db.Campsites
+    .Select(c => new CampsiteDTO
+    {
+        Id = c.Id,
+        Nickname = c.Nickname,
+        ImageUrl = c.ImageUrl,
+        CampsiteTypeId = c.CampsiteTypeId
+    }).ToList();
+});
+
+
+
+
 app.Run();

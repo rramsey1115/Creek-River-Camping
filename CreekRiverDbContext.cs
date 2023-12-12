@@ -35,16 +35,22 @@ public class CreekRiverDbContext : DbContext
 
         modelBuilder.Entity<UserProfile>().HasData(new UserProfile[]
         {
-            new UserProfile {Id = 1, FirstName="Ricky", LastName="Bobby", Email="uaintfirsturlast@gmail.com", Reservations = {new Reservation () {Id = 1, CampsiteId = 1, UserProfileId = 1, CheckinDate = new DateTime(2023, 06, 09, 10, 00, 00), CheckoutDate = new DateTime(2023, 06, 12, 10, 00, 00)}, new Reservation {Id = 11, CampsiteId = 9, UserProfileId = 1, CheckinDate = new DateTime(2024, 03, 10, 14, 30, 00), CheckoutDate = new DateTime(2024, 03, 15, 14, 30, 00)}}},
-            new UserProfile {Id = 2, FirstName="Rodney", LastName="Rogers", Email="bigbuckman@gmail.com", Reservations = {new Reservation () {Id = 2, CampsiteId = 3, UserProfileId = 2, CheckinDate = new DateTime(2023, 04, 11, 11, 11, 00), CheckoutDate = new DateTime(2023, 04, 14, 11, 11, 00)}, new Reservation {Id = 12, CampsiteId = 11, UserProfileId = 2, CheckinDate = new DateTime(2024, 04, 05, 10, 00, 00), CheckoutDate = new DateTime(2024, 04, 08, 10, 00, 00)}}},
-            new UserProfile {Id = 3, FirstName="Sarah", LastName="Johnson", Email="sarah.j@gmail.com", Reservations = {new Reservation () {Id = 3, CampsiteId = 4, UserProfileId = 3, CheckinDate = new DateTime(2023, 07, 15, 12, 00, 00), CheckoutDate = new DateTime(2023, 07, 18, 12, 00, 00)}, new Reservation {Id = 13, CampsiteId = 14, UserProfileId = 3, CheckinDate = new DateTime(2024, 05, 15, 11, 30, 00), CheckoutDate = new DateTime(2024, 05, 18, 11, 30, 00)}}},
-            new UserProfile {Id = 4, FirstName="Mike", LastName="Smith", Email="mike.smith@gmail.com", Reservations = {new Reservation () {Id = 4, CampsiteId = 2, UserProfileId = 4, CheckinDate = new DateTime(2023, 08, 20, 10, 30, 00), CheckoutDate = new DateTime(2023, 08, 25, 10, 30, 00)}}},
-            new UserProfile {Id = 5, FirstName="Emily", LastName="Davis", Email="emily.d@gmail.com", Reservations = {new Reservation () {Id = 5, CampsiteId = 2, UserProfileId = 5, CheckinDate = new DateTime(2023, 09, 10, 14, 00, 00), CheckoutDate = new DateTime(2023, 09, 14, 14, 00, 00)}}},
-            new UserProfile {Id = 6, FirstName="John", LastName="Anderson", Email="john.a@gmail.com", Reservations = {new Reservation () {Id = 6, CampsiteId = 3, UserProfileId = 6, CheckinDate = new DateTime(2023, 10, 05, 11, 00, 00), CheckoutDate = new DateTime(2023, 10, 08, 11, 00, 00)}}},
-            new UserProfile {Id = 7, FirstName="Olivia", LastName="Taylor", Email="olivia.t@gmail.com", Reservations = {new Reservation () {Id = 7, CampsiteId = 2, UserProfileId = 7, CheckinDate = new DateTime(2023, 11, 15, 09, 30, 00), CheckoutDate = new DateTime(2023, 11, 18, 09, 30, 00)}}},
-            new UserProfile {Id = 8, FirstName="Daniel", LastName="Brown", Email="daniel.b@gmail.com", Reservations = {new Reservation () {Id = 8, CampsiteId = 1, UserProfileId = 8, CheckinDate = new DateTime(2023, 12, 01, 15, 30, 00), CheckoutDate = new DateTime(2023, 12, 05, 15, 30, 00)}}},
-            new UserProfile {Id = 9, FirstName="Sophia", LastName="Martin", Email="sophia.m@gmail.com", Reservations = {new Reservation () {Id = 9, CampsiteId = 4, UserProfileId = 9, CheckinDate = new DateTime(2024, 01, 10, 12, 00, 00), CheckoutDate = new DateTime(2024, 01, 15, 12, 00, 00)}}},
-            new UserProfile {Id = 10, FirstName="David", LastName="Miller", Email="david.m@gmail.com", Reservations = {new Reservation () {Id = 10, CampsiteId = 1, UserProfileId = 10, CheckinDate = new DateTime(2024, 02, 20, 08, 00, 00), CheckoutDate = new DateTime(2024, 02, 25, 08, 00, 00)}}},
+            new UserProfile {
+                Id = 1, 
+                FirstName="Ricky", 
+                LastName="Bobby", 
+                Email="uaintfirsturlast@gmail.com"
+
+            },
+            new UserProfile {Id = 2, FirstName="Rodney", LastName="Rogers", Email="bigbuckman@gmail.com"},
+            new UserProfile {Id = 3, FirstName="Sarah", LastName="Johnson", Email="sarah.j@gmail.com"},
+            new UserProfile {Id = 4, FirstName="Mike", LastName="Smith", Email="mike.smith@gmail.com"},
+            new UserProfile {Id = 5, FirstName="Emily", LastName="Davis", Email="emily.d@gmail.com"},
+            new UserProfile {Id = 6, FirstName="John", LastName="Anderson", Email="john.a@gmail.com"},
+            new UserProfile {Id = 7, FirstName="Olivia", LastName="Taylor", Email="olivia.t@gmail.com"},
+            new UserProfile {Id = 8, FirstName="Daniel", LastName="Brown", Email="daniel.b@gmail.com"},
+            new UserProfile {Id = 9, FirstName="Sophia", LastName="Martin", Email="sophia.m@gmail.com"},
+            new UserProfile {Id = 10, FirstName="David", LastName="Miller", Email="david.m@gmail.com"},
         });
 
         modelBuilder.Entity<Reservation>().HasData(new Reservation[]
@@ -54,14 +60,14 @@ public class CreekRiverDbContext : DbContext
             new Reservation {Id = 3, CampsiteId = 4, UserProfileId = 3, CheckinDate = new DateTime(2023, 07, 15, 12, 00, 00), CheckoutDate = new DateTime(2023, 07, 18, 12, 00, 00)},
             new Reservation {Id = 4, CampsiteId = 2, UserProfileId = 4, CheckinDate = new DateTime(2023, 08, 20, 10, 30, 00), CheckoutDate = new DateTime(2023, 08, 25, 10, 30, 00)},
             new Reservation {Id = 5, CampsiteId = 2, UserProfileId = 5, CheckinDate = new DateTime(2023, 09, 10, 14, 00, 00), CheckoutDate = new DateTime(2023, 09, 14, 14, 00, 00)},
-            new Reservation {Id = 6, CampsiteId = 3, UserProfileId = 6, CheckinDate = new DateTime(2023, 10, 05, 11, 00, 00), CheckoutDate = new DateTime(2023, 10, 08, 11, 00, 00)},
-            new Reservation {Id = 7, CampsiteId = 2, UserProfileId = 7, CheckinDate = new DateTime(2023, 11, 15, 09, 30, 00), CheckoutDate = new DateTime(2023, 11, 18, 09, 30, 00)},
-            new Reservation {Id = 8, CampsiteId = 1, UserProfileId = 8, CheckinDate = new DateTime(2023, 12, 01, 15, 30, 00), CheckoutDate = new DateTime(2023, 12, 05, 15, 30, 00)},
-            new Reservation {Id = 9, CampsiteId = 4, UserProfileId = 9, CheckinDate = new DateTime(2024, 01, 10, 12, 00, 00), CheckoutDate = new DateTime(2024, 01, 15, 12, 00, 00)},
-            new Reservation {Id = 10, CampsiteId = 1, UserProfileId = 10, CheckinDate = new DateTime(2024, 02, 20, 08, 00, 00), CheckoutDate = new DateTime(2024, 02, 25, 08, 00, 00)},
-            new Reservation {Id = 11, CampsiteId = 9, UserProfileId = 1, CheckinDate = new DateTime(2024, 03, 10, 14, 30, 00), CheckoutDate = new DateTime(2024, 03, 15, 14, 30, 00)},
-            new Reservation {Id = 12, CampsiteId = 11, UserProfileId = 2, CheckinDate = new DateTime(2024, 04, 05, 10, 00, 00), CheckoutDate = new DateTime(2024, 04, 08, 10, 00, 00)},
-            new Reservation {Id = 13, CampsiteId = 14, UserProfileId = 3, CheckinDate = new DateTime(2024, 05, 15, 11, 30, 00), CheckoutDate = new DateTime(2024, 05, 18, 11, 30, 00)},
+            // new Reservation {Id = 6, CampsiteId = 3, UserProfileId = 6, CheckinDate = new DateTime(2023, 10, 05, 11, 00, 00), CheckoutDate = new DateTime(2023, 10, 08, 11, 00, 00)},
+            // new Reservation {Id = 7, CampsiteId = 2, UserProfileId = 7, CheckinDate = new DateTime(2023, 11, 15, 09, 30, 00), CheckoutDate = new DateTime(2023, 11, 18, 09, 30, 00)},
+            // new Reservation {Id = 8, CampsiteId = 1, UserProfileId = 8, CheckinDate = new DateTime(2023, 12, 01, 15, 30, 00), CheckoutDate = new DateTime(2023, 12, 05, 15, 30, 00)},
+            // new Reservation {Id = 9, CampsiteId = 4, UserProfileId = 9, CheckinDate = new DateTime(2024, 01, 10, 12, 00, 00), CheckoutDate = new DateTime(2024, 01, 15, 12, 00, 00)},
+            // new Reservation {Id = 10, CampsiteId = 1, UserProfileId = 10, CheckinDate = new DateTime(2024, 02, 20, 08, 00, 00), CheckoutDate = new DateTime(2024, 02, 25, 08, 00, 00)},
+            // new Reservation {Id = 11, CampsiteId = 9, UserProfileId = 1, CheckinDate = new DateTime(2024, 03, 10, 14, 30, 00), CheckoutDate = new DateTime(2024, 03, 15, 14, 30, 00)},
+            // new Reservation {Id = 12, CampsiteId = 11, UserProfileId = 2, CheckinDate = new DateTime(2024, 04, 05, 10, 00, 00), CheckoutDate = new DateTime(2024, 04, 08, 10, 00, 00)},
+            // new Reservation {Id = 13, CampsiteId = 14, UserProfileId = 3, CheckinDate = new DateTime(2024, 05, 15, 11, 30, 00), CheckoutDate = new DateTime(2024, 05, 18, 11, 30, 00)},
         });
     }
 }
