@@ -155,9 +155,20 @@ app.MapPost("/api/reservations", (CreekRiverDbContext db, Reservation newRes) =>
     }
     catch (Exception ex)
     {
-        return Results.BadRequest("Bad data submitted");
+        return Results.BadRequest($"Bad data submitted: {ex}");
     }
+});
 
+// DELETE a reservation ----------------------------------------------------------------
+app.MapDelete("api/reservations/{id}", (CreekRiverDbContext db, int id) => {
+    Reservation reservation = db.Reservations.SingleOrDefault(reservation => reservation.Id == id);
+    if (reservation == null)
+    {
+        return Results.NotFound();
+    }
+    db.Reservations.Remove(reservation);
+    db.SaveChanges();
+    return Results.NoContent();
 });
 
 
