@@ -9,4 +9,6 @@ public class Reservation
     public UserProfile UserProfile { get; set; }
     public DateTime CheckinDate { get; set; }
     public DateTime CheckoutDate { get; set; }
+    
+    public int TotalNights => (CheckoutDate - CheckinDate).Days;
 }

@@ -144,7 +144,42 @@ app.MapPost("/api/reservations", (CreekRiverDbContext db, Reservation newRes) =>
     {
         return Results.BadRequest("Reservation checkout must be at least one day after checkin");
     }
-    
+
+    // check if reservation is too long
+    Campsite campsite = db.Campsites.Include(c => c.CampsiteType).Single(c => c.Id == newRes.CampsiteId);
+    if (campsite != null && newRes.TotalNights > campsite.CampsiteType.MaxReservationDays)
+    {
+        return Results.BadRequest("Reservation exceeds maximum reservation days for this campsite type");
+    }
+
+    // check if date is not previously reserved at campsite
+    if (campsite != null)
+    {
+        var arr = db.Reservations.Where(r => r.CampsiteId == campsite.Id).ToList();
+        foreach (var a in arr)
+        {
+            if(newRes.CheckinDate >= a.CheckinDate && newRes.CheckinDate < a.CheckoutDate)
+            {
+                return Results.BadRequest("Reservation already exists for this campsite during checkin date");
+            }
+            if(newRes.CheckoutDate >= a.CheckinDate && newRes.CheckoutDate < a.CheckoutDate)
+            {
+                return Results.BadRequest("Reservation already exists for this campsite during checkout date");
+            }
+        }
+    }
+
+    // check that reservation is at least one day in the future ( no day-of reservations )
+    if (newRes.CheckoutDate <= DateTime.Now || newRes.CheckinDate <= DateTime.Now)
+    {
+        return Results.BadRequest("Reservation cannot be in the past or today");
+    }
+
+    if (newRes.CheckoutDate == DateTime.MinValue || newRes.CheckinDate == DateTime.MinValue)
+    {
+        return Results.BadRequest("Reservations must have checkin and checkout dates");
+    }
+
     try
     {
         db.Reservations.Add(newRes);
